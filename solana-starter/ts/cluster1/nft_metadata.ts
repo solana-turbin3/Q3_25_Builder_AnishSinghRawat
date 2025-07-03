@@ -75,11 +75,12 @@ umi.use(signerIdentity(signer));
         // Follow this JSON structure
         // https://docs.metaplex.com/programs/token-metadata/changelog/v1.0#json-structure
 
-        const image = "https://devnet.irys.xyz/FwmSbw8qk2pNzEzYt62mgjKBuLAt8cAVcACHSnoUqUtQ"
+
+        const image = ""
         const metadata = {
-            name: "ShinyShiny",
+            name: "CRACKED_DEV",
             symbol: "$",
-            description: "Legendary Shinyshinyting From AnishSR",
+            description: "uhhh",
             image: image,
             attributes: [
                 {trait_type: 'Collection', value: 'Genesis'},

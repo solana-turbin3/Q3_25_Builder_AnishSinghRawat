@@ -17,7 +17,7 @@ umi.use(signerIdentity(signer));
 (async () => {
     try {
         //1. Load image
-        const image = await readFile("./rug1.png");
+        const image = await readFile("./turbin.png");
 
         //2. Convert image to generic file.
         const genericFile = createGenericFile(image, "rug.png", 
