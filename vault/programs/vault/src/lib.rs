@@ -5,12 +5,15 @@ use anchor_lang::prelude::*;
 use anchor_lang::system_program::transfer;
 use anchor_lang::system_program::Transfer;
 
-
 declare_id!("Hot4S2HDwRYp4YVw1cEUqMcHkvRDWfPfAqLxGG7ndZbN");            // Declares at what onchain address the program lives.
 
 #[program]                          //Specifies the module containing the program’s instruction logic
 pub mod vault {
     use super::*;
+
+    //Every instruction has its own Context struct 
+    //that lists all the accounts and, optionally, 
+    //any data the instruction will need.
 
     pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
         ctx.accounts.initialize(&ctx.bumps)?;
@@ -55,10 +58,9 @@ pub struct Initialize<'info> {
         init, 
         payer = signer, 
         space = 8 + VaultState::INIT_SPACE ,
-        seeds = [b"state", signer.key().as_ref()], // &str -> bytes
+        seeds = [b"state", signer.key().as_ref()], // b =>  byte string literal
         bump,
     )]
-
     // the Account field also ensures that the account provided is owned by the program
     pub vault_state: Account<'info, VaultState>,    //Account container that checks ownership on deserialization
 
@@ -128,6 +130,14 @@ pub struct Payment<'info> {
 
     pub vault: SystemAccount<'info>,
     pub system_program: Program<'info, System>,
+}
+
+#[error_code]
+pub enum VaultError {
+    #[msg("Vault already exists")]
+    VaultAlreadyExists,
+    #[msg("Invalid amount")]
+    InvalidAmount,
 }
     
 impl<'info> Payment<'info> {
