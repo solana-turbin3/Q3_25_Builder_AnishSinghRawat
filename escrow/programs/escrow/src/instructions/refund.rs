@@ -6,8 +6,9 @@ use anchor_lang::prelude::*;
 
 use anchor_spl::{
     associated_token::AssociatedToken, 
-    token_interface::{transfer_checked, Mint, TokenAccount, TokenInterface, TransferChecked, CloseAccount, close_account}};
-use crate::{escrow, state::Escrow, SEED};
+    token_interface::{transfer_checked, Mint, TokenAccount, TokenInterface, TransferChecked, CloseAccount, close_account}
+};
+use crate::{escrow, state::Escrow};
 
 
 #[derive(Accounts)]
@@ -53,7 +54,7 @@ pub struct Refund<'info> {
 }
 
 impl <'info> Refund<'info> {
-    pub fn refund_and_close(&mut self) -> Result<()> {
+    pub fn refund_and_close_vault(&mut self) -> Result<()> {
         
         let signer_seeds: [&[&[u8]]; 1] = [&[
             b"escrow",
