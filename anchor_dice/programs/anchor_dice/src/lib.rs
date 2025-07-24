@@ -15,7 +15,7 @@ declare_id!("HsFmJycXkXAFUQsFUmN1gbD4By4KHzYYQGdU9KVUfmKB");
 pub mod anchor_dice {
     use super::*;
 
-    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-        initialize::handler(ctx)
-    }
+    // pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
+    //     initialize::handler(ctx)
+    // }
 }
